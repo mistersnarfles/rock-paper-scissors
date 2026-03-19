@@ -86,5 +86,4 @@ function playGame() {
     }
 }
 
-console.log('test')
 playGame()
