@@ -81,6 +81,13 @@ function playGame() {
         playRound(getHumanChoice(), getComputerChoice())
         if ( i == 4 ) {
             console.log(humanScore, tie, computerScore)
+            if (humanScore > computerScore) {
+                console.log('Human wins!')
+            } else if (computerScore > humanScore) {
+                console.log('Computer wins!')
+            } else {
+                console.log(`It's a draw!`)
+            }
         }
         i++
     }
