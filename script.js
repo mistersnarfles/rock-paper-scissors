@@ -65,12 +65,14 @@ function playGame() {
             || humanChoice == 'scissors' && computerChoice == 'paper'
         ) {
             console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+            alert(`You win! ${humanChoice} beats ${computerChoice}`)
             humanScore++
         } else if (humanChoice == computerChoice) { 
             alert('Tie! Please try again!')
             tie++
         } else {
             console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+            alert(`You lose! ${computerChoice} beats ${humanChoice}`)
             computerScore++
         }
     }
@@ -84,4 +86,5 @@ function playGame() {
     }
 }
 
+console.log('test')
 playGame()
