@@ -5,6 +5,11 @@ console.log(`Hello, let's play some Rock, Paper, Scissors`)
 // const humanSelection = getHumanChoice()
 const computerSelection = getComputerChoice()
 const buttons = document.querySelectorAll('button')
+const results = document.querySelector('#results')
+const para = document.createElement('p')
+const playerScore = document.getElementById('playerScore')
+const computerScore = document.getElementById('computerScore')
+const resetButton = document.getElementById('reset')
 
 // Write function named getComputerChoice
 function getComputerChoice() {
@@ -45,9 +50,13 @@ function playGame() {
 // Move playRound function and score variables inside playGame
     // Set intialization variables for both human and computer score
     let humanScore = 0
-    let computerScore = 0
+    let getComputerScore = 0
     let tie = 0
 }
+let humanScore = 0
+let getComputerScore = 0
+let tie = 0
+
 // Write function playRound that takes humanChoice and 
 // computerChoice as parameters
 function playRound(humanChoice, computerChoice) {
@@ -60,36 +69,46 @@ function playRound(humanChoice, computerChoice) {
     // console log 'You win! humanChoice beats computerChoice'
     // Add 1 point to humanScore
     // Else console log 'You lose! computerChoice beats humanChoice'
-    // Add 1 point to computerScore
+    // Add 1 point to getComputerScore
     if (humanChoice == 'rock' && computerChoice == 'scissors'
         || humanChoice == 'paper' && computerChoice == 'rock'
         || humanChoice == 'scissors' && computerChoice == 'paper'
     ) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-        alert(`You win! ${humanChoice} beats ${computerChoice}`)
+        para.textContent = `You win! ${humanChoice} beats ${computerChoice}`
         humanScore++
+        playerScore.textContent = 'Player: ' + humanScore
     } else if (humanChoice == computerChoice) { 
-        alert('Tie! Please try again!')
+        para.textContent = 'Tie! Please try again!'
         tie++
     } else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-        alert(`You lose! ${computerChoice} beats ${humanChoice}`)
-        computerScore++
+        para.textContent = `You lose! ${computerChoice} beats ${humanChoice}`
+        getComputerScore++
+        computerScore.textContent = 'Computer: ' + getComputerScore
     }
 }
 
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (button.id === 'rock'){
-            playRound('rock', computerSelection)
-        } else if (button.id === 'paper') {
-            playRound('paper', computerSelection)
-        } else {
-            playRound('scissors', computerSelection)
+        if (results.firstChild === para) {
+            results.removeChild(para)
         }
+
+        if (button.id === 'rock'){
+            playRound('rock', getComputerChoice())
+        } else if (button.id === 'paper') {
+            playRound('paper', getComputerChoice())
+        } else if (button.id === 'scissors') {
+            playRound('scissors', getComputerChoice())
+        }
+
+        results.appendChild(para)
     
     })
 })
 
-
+resetButton.addEventListener('click', () => {
+    playerScore.textContent = 'Player: '
+    computerScore.textContent = 'Computer: '
+})
 // playGame()
