@@ -2,8 +2,9 @@ console.log(`Hello, let's play some Rock, Paper, Scissors`)
 
 
 // Assign value of getHumanChoice and getComputerChoice to variables
-const humanSelection = getHumanChoice()
+// const humanSelection = getHumanChoice()
 const computerSelection = getComputerChoice()
+const buttons = document.querySelectorAll('button')
 
 // Write function named getComputerChoice
 function getComputerChoice() {
@@ -46,36 +47,49 @@ function playGame() {
     let humanScore = 0
     let computerScore = 0
     let tie = 0
-// Loops playRound 5 times and keep track of scores
-    // Write function playRound that takes humanChoice and 
-    // computerChoice as parameters
-    function playRound(humanChoice, computerChoice) {
-        // Set initialization variable for winner's score
-        // Use toLowerCase on humanChoice to make answer case-insensitive
-        humanChoice = humanChoice.toLowerCase()
-        // If humanChoice is Rock and computerChoice is Scissors
-        // Or if humanChoice is Scissors and computerChoice is Paper
-        // Or if humanChoice is Paper and computerChoic is Rock
-        // console log 'You win! humanChoice beats computerChoice'
-        // Add 1 point to humanScore
-        // Else console log 'You lose! computerChoice beats humanChoice'
-        // Add 1 point to computerScore
-        if (humanChoice == 'rock' && computerChoice == 'scissors'
-            || humanChoice == 'paper' && computerChoice == 'rock'
-            || humanChoice == 'scissors' && computerChoice == 'paper'
-        ) {
-            console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-            alert(`You win! ${humanChoice} beats ${computerChoice}`)
-            humanScore++
-        } else if (humanChoice == computerChoice) { 
-            alert('Tie! Please try again!')
-            tie++
-        } else {
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-            alert(`You lose! ${computerChoice} beats ${humanChoice}`)
-            computerScore++
-        }
+}
+// Write function playRound that takes humanChoice and 
+// computerChoice as parameters
+function playRound(humanChoice, computerChoice) {
+    // Set initialization variable for winner's score
+    // Use toLowerCase on humanChoice to make answer case-insensitive
+    humanChoice = humanChoice.toLowerCase()
+    // If humanChoice is Rock and computerChoice is Scissors
+    // Or if humanChoice is Scissors and computerChoice is Paper
+    // Or if humanChoice is Paper and computerChoic is Rock
+    // console log 'You win! humanChoice beats computerChoice'
+    // Add 1 point to humanScore
+    // Else console log 'You lose! computerChoice beats humanChoice'
+    // Add 1 point to computerScore
+    if (humanChoice == 'rock' && computerChoice == 'scissors'
+        || humanChoice == 'paper' && computerChoice == 'rock'
+        || humanChoice == 'scissors' && computerChoice == 'paper'
+    ) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+        alert(`You win! ${humanChoice} beats ${computerChoice}`)
+        humanScore++
+    } else if (humanChoice == computerChoice) { 
+        alert('Tie! Please try again!')
+        tie++
+    } else {
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+        alert(`You lose! ${computerChoice} beats ${humanChoice}`)
+        computerScore++
     }
 }
 
-playGame()
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.id === 'rock'){
+            playRound('rock', computerSelection)
+        } else if (button.id === 'paper') {
+            playRound('paper', computerSelection)
+        } else {
+            playRound('scissors', computerSelection)
+        }
+    
+    })
+})
+
+
+// playGame()
