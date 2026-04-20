@@ -85,6 +85,12 @@ function playRound(humanChoice, computerChoice) {
         getComputerScore++
         computerScore.textContent = 'Computer: ' + getComputerScore
     }
+
+    if (humanScore === 5){
+        para.textContent = 'Player wins the game!'
+    } else if (getComputerScore === 5){
+        para.textContent = 'Computer wins the game!'
+    }
 }
 
 
@@ -110,5 +116,10 @@ buttons.forEach((button) => {
 resetButton.addEventListener('click', () => {
     playerScore.textContent = 'Player: '
     computerScore.textContent = 'Computer: '
+    humanScore = 0
+    getComputerScore = 0
+    para.remove()
 })
+
+
 // playGame()
